@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by liwj on 15/7/18.
- */
 public class Pager implements Serializable {
     private static final long serialVersionUID = 8848523495013555357L;
     public static int DEFAULT_PAGE_SIZE = 20;
@@ -16,11 +13,12 @@ public class Pager implements Serializable {
     private int total;
     private int records;
     private List<?> rows = new ArrayList<>();
-    public Pager(){
+
+    public Pager() {
         this.pageSize = DEFAULT_PAGE_SIZE;
     }
 
-    public Pager(int page, int pageSize){
+    public Pager(int page, int pageSize) {
         this.pageSize = pageSize;
         this.page = page;
     }
@@ -42,8 +40,8 @@ public class Pager implements Serializable {
     }
 
     public int getTotal() {
-        if(this.total < 0) {
-            this.total = (int) Math.ceil((double)this.records / (double)this.pageSize);
+        if (this.total < 0) {
+            this.total = (int) Math.ceil((double) this.records / (double) this.pageSize);
         }
         return total;
     }
@@ -54,8 +52,8 @@ public class Pager implements Serializable {
 
     public void setRecords(int records) {
         this.records = records;
-        this.records = records > 0?records:0;
-        this.total = (int) Math.ceil((double)records / (double)this.pageSize);
+        this.records = records > 0 ? records : 0;
+        this.total = (int) Math.ceil((double) records / (double) this.pageSize);
     }
 
     public List<?> getRows() {
