@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <#include "/common/inc.html"/>
+ <#include "/common/inc_more.html"/>
+ <link rel="stylesheet" href="${baseUrl}/resources/ace/assets/css/select2.css" />
+ <link rel="stylesheet" href="${baseUrl}/resources/ace/assets/css/font-awesome.css" />
+ <link rel="stylesheet" href="${baseUrl}/resources/ace/assets/css/ace.css" />
+</head>
+<body>
+	<div class="main-content">
+    	<div class="main-content-inner">
+        	<div class="page-content">
+            	<div class="row">
+                	<div class="col-xs-12">
+                	 <form id="dForm" method="post" action="${baseUrl}/address/save" class="form-horizontal" role="form" enctype="multipart/form-data">
+                	 	<input type="hidden" name="isDefault" id="isDefault">
+                	 	<input type="hidden" name="id" value="${address.id!}">
+                		<div class="form-group">
+                				<label class="col-sm-2 control-label no-padding-right">收货人姓名:&nbsp;&nbsp;&nbsp;</label>
+                				<input type="text"  value="${address.acceptusername!}" id="acceptusername" name="acceptusername" placeholder="请输入收货人姓名"/>
+                				<label style="color: red;font-size:large;">&nbsp;&nbsp;*</label>
+						</div>
+						<div class="form-group">
+                				<label class="col-sm-2 control-label no-padding-right">&nbsp;&nbsp;&nbsp;&nbsp;所在地区:&nbsp;&nbsp;&nbsp;</label>
+                				<select style="width: 15%;" id="province" name="province">
+                					<option value="广东">广东</option>
+                					<option value="上海">上海</option>
+                					<option value="北京">北京</option>
+                				</select>
+                				<label class="col-sm-2 control-label no-padding-right">省&nbsp;&nbsp;</label>
+                				<select style="width: 15%;" id="city" name="city">
+                					<option value="广州">广州</option>
+                					<option value="东莞">东莞</option>
+                					<option  value="深圳">深圳</option>
+                				</select>
+                				<label class="col-sm-2 control-label no-padding-right">市</label>
+                				<select style="width: 15%;" id="area" name="area">
+                					<option  value="白云">白云</option>
+                					<option  value="天河">天河</option>
+                					<option value="萝岗">萝岗</option>
+                				</select>
+                				<label class="col-sm-2 control-label no-padding-right">区</label>
+							</div>
+							<div class="form-group">
+                				<label class="col-sm-2 control-label no-padding-right">&nbsp;&nbsp;&nbsp;&nbsp;街道地址:&nbsp;&nbsp;&nbsp;</label>
+                				<textarea rows="" cols="50" style="vertical-align: text-top;resize:none;" id="detailarea" name="detail">${address.detail!}</textarea>
+                				<label style="color: red;font-size:large;">&nbsp;&nbsp;*</label>
+							</div>
+							<div class="form-group">
+                				<label class="col-sm-2 control-label no-padding-right">&nbsp;&nbsp;&nbsp;&nbsp;邮政编码:&nbsp;&nbsp;&nbsp;</label>
+                				<input type="text"  value="${address.postcode!}" id="postcode" name="postcode" placeholder="请输入邮政编码"/>
+							</div>
+							<div class="form-group">
+                				<label class="col-sm-2 control-label no-padding-right">&nbsp;&nbsp;&nbsp;&nbsp;手机号码:&nbsp;&nbsp;&nbsp;</label>
+                				<input type="text"  value="${address.tel!}" id="tel" name="tel" placeholder="请输入手机号码"/>
+                				<label style="color: red;font-size:large;">&nbsp;&nbsp;*</label>
+							</div>
+							<div class="form-group">
+                				<label class="col-sm-2 control-label no-padding-right">&nbsp;&nbsp;&nbsp;&nbsp;设为默认:&nbsp;&nbsp;&nbsp;</label>
+                				<input type="checkbox"  id="checkdefalut" <#if address.isDefault??><#if address.isDefault=="1">checked="checked"</#if></#if>/>
+							</div>
+							<div class="hr hr-16 hr-dotted"></div>
+						<div style="text-align: center;">
+							<button class="btn btn-info" type="button" onclick="save()">
+								<i class="ace-icon fa fa-check bigger-110"></i>
+								保存
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="reset">
+								<i class="ace-icon fa fa-undo bigger-110"></i>
+								重置
+							</button>
+						</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	function save(){
+		if($("#checkdefalut").attr("checked")=="checked"){
+			$("#isDefault").val("1");
+		}else{
+			$("#isDefault").val("0");
+		}
+		$("#dForm").submit();
+	}
+	function refreshData(){
+		window.parent.refreshData();
+	}
+</script>
+</html>

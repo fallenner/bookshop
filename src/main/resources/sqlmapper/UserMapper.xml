@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hnust.dao.UserMapper">
+     <resultMap id="baseResultMap" type="cn.hnust.domain.User">
+        <id column="uid" property="uid" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="code" property="code" jdbcType="VARCHAR" />
+        <result column="state" property="state" />
+        <result column="truename" property="truename" />
+        <result column="tel" property="tel" />
+        <result column="salt" property="salt"/>
+    </resultMap>
+    <select id="findByUserName" parameterType="java.lang.String" resultMap="baseResultMap">
+        select * from user u where username=#{username}
+    </select>
+    <select id="query" parameterType="map" resultMap="baseResultMap">
+        select * from user u where 1=1
+        <include refid="queryCondition"></include>
+        <if test="orderBy !=null and orderBy !=''">
+            order by ${orderBy}
+        </if>
+    </select>
+    <select id="queryCount" parameterType="map" resultType="Integer">
+        select count(*) from user u where 1=1
+        <include refid="queryCondition"></include>
+        <if test="orderBy !=null and orderBy !=''">
+            order by ${orderBy}
+        </if>
+    </select>
+     <update id="update" parameterType="cn.hnust.domain.User">
+        UPDATE `user` 
+        <set>
+            <if test="password !=null and password !=''">
+                password=#{password},
+            </if>
+            <if test="email !=null and email !=''">
+                email=#{email},
+            </if>
+            <if test="state !=null and state !=''">
+                state=#{state},
+            </if>
+            <if test="truename !=null and truename !=''">
+                truename=#{truename},
+            </if>
+             <if test="code !=null and code !=''">
+                code=#{code},
+            </if>
+            <if test="tel != null and tel !=''" >
+                tel=#{tel},
+            </if>
+             <if test="salt != null and salt !=''" >
+                salt=#{salt},
+            </if>
+        </set>
+        WHERE username=#{username}
+    </update>
+    <insert id="insert" parameterType="cn.hnust.domain.User">
+        insert into `user`
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="uid != null and uid !=''" >
+                uid,
+            </if>
+            <if test="username != null and username !=''" >
+                username,
+            </if>
+              <if test="password != null and password !=''" >
+                password,
+            </if>
+              <if test="email != null and email !=''" >
+                email,
+            </if>
+             <if test="code != null and code !=''" >
+                code,
+            </if>
+             <if test="state != null and state !=''" >
+                state,
+            </if>
+            <if test="truename != null and truename !=''" >
+                truename,
+            </if>
+            <if test="tel !=null and tel !=''">
+                tel,
+            </if>
+             <if test="salt != null and salt !=''" >
+                salt,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+             <if test="uid != null and uid !=''" >
+                #{uid},
+            </if>
+            <if test="username != null and username !=''" >
+                #{username},
+            </if>
+            <if test="password != null and password !=''" >
+                #{password},
+            </if>
+            <if test="email != null and email !=''" >
+                #{email},
+            </if>
+            <if test="code != null and code !=''" >
+                #{code},
+            </if>
+            <if test="state != null and state !=''" >
+                #{state},
+            </if>
+             <if test="truename != null and truename !=''" >
+                #{truename},
+            </if>
+             <if test="tel != null and tel !=''" >
+                #{tel},
+            </if>
+             <if test="salt != null and salt !=''" >
+                #{salt},
+            </if>
+        </trim>
+    </insert>
+    <sql id="queryCondition">
+        <if test="entitySQL !=null and entitySQL !=''">
+        	AND ${entitySQL}    
+        </if>
+        <if test="dto !=null">
+            <if test="dto.username !=null and dto.username !=''">
+                AND u.username like #{dto.username}
+            </if>
+            <if test="dto.truename !=null and dto.truename !=''">
+                AND u.truename like #{dto.truename}
+            </if>
+        </if>
+    </sql>
+</mapper>

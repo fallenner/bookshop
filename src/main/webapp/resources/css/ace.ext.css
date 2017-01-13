@@ -1,0 +1,84 @@
+.ui-jqgrid .ui-jqgrid-btable {
+    border-left: none !important;
+    margin-left: 0px;
+}
+.ui-jqgrid .ui-jqgrid-bdiv {
+    border-top: 1px solid #E1E1E1;
+    border-left:1px solid #E1E1E1;
+    border-right:1px solid #E1E1E1;
+}
+.ui-jqgrid-hdiv .ui-jqgrid-htable {
+    border-top: none;
+}
+.ui-jqgrid tr.ui-row-ltr td,
+.ui-jqgrid tr.ui-row-rtl td {
+    border-bottom:none;
+    padding: 10px 4px;
+    border-color: #E1E1E1;
+    font-size:1.6rem;
+    border-right:none;
+    border-left:none;
+    border-top:1px solid #E1E1E1;
+}
+.ui-jqgrid .ui-jqgrid-labels {
+    border-bottom: 1px solid #E1E1E1 !important;
+    background: #FFFFFF !important;
+    background-image: -webkit-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
+    background-image: -o-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
+    background-image: linear-gradient(to bottom, #f8f8f8 0%, #ececec 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffececec', GradientType=0);
+    padding: 0 !important;
+    border-left: 0px solid #E1E1E1 !important;
+}
+.ui-jqgrid .ui-jqgrid-labels th {
+    border-right:none !important;
+    text-align: left !important;
+}
+.ui-jqgrid-sortable {
+    padding-left: 4px;
+    font-size: 1.6rem;
+    color: #777;
+    font-weight: bold;
+}
+
+.ui-jqgrid .ui-jqgrid-bdiv {
+    border:none;
+}
+.ui-jqgrid .ui-jqgrid-hdiv {
+    background-color: #ffffff;
+    border: 1px solid #D3D3D3;
+    border-width: 1px 0 0 1px;
+    line-height: 15px;
+    font-weight: bold;
+    color: #777;
+    text-shadow: none;
+}
+.ui-jqgrid .ui-jqgrid-pager {
+    line-height: 15px;
+    height: 55px;
+    padding-top: 3px !important;
+    padding-bottom: 5px !important;
+    background-color: #ffffff !important;
+    border-bottom: 0px solid #E1E1E1 !important;
+    border-top: 0px solid #E1E1E1 !important;
+}
+
+.ui-jqgrid tr.jqgrow,
+.ui-jqgrid tr.ui-row-ltr,
+.ui-jqgrid tr.ui-row-rtl {
+    background-color: #F9F9F9;
+}
+.ui-jqgrid-btable .ui-widget-content.ui-priority-secondary {
+    background-image: none;
+    background-color: #FFFFFF;
+    opacity: 1;
+}
+.ui-jqgrid-btable .ui-widget-content.ui-state-hover {
+    background-image: none;
+    background-color: #EFF4F7;
+    opacity: 1;
+}
+.ui-jqgrid-btable .ui-widget-content.ui-state-highlight {
+    background-color: #E4EFC9;
+}

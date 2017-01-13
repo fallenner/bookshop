@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hnust.dao.CategoryMapper">
+     <resultMap id="baseResultMap" type="cn.hnust.domain.Category">
+        <id column="cid" property="cid" jdbcType="VARCHAR"/>
+        <result column="cname" property="cname" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="queryCondition">
+        <if test="dto !=null">
+        <if test="dto.cid != null and dto.cid != ''">
+            and c.cname=#{dto.cid}
+        </if>
+        <if test="dto.cname != null and dto.cid != ''">
+            and c.cname=#{dto.cname}
+        </if>
+        </if>
+    </sql>
+    <select id="query" parameterType="map" resultMap="baseResultMap">
+        select * from category c where 1=1 
+        <include refid="queryCondition"></include>     
+    </select>
+    <select id="findById" parameterType="java.lang.String" resultMap="baseResultMap">
+        SELECT * FROM category c WHERE c.cid=#{cid}
+    </select>
+</mapper>

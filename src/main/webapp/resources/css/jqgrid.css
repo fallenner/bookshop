@@ -1,0 +1,11 @@
+.ui-jqgrid .ui-jqgrid-labels th {
+    border-right: 1px solid #E1E1E1 !important;
+    text-align: center !important;
+}
+
+.ui-jqgrid tr.footrow-ltr td{
+    border-top: 1px solid #E1E1E1 !important;
+    border-right: 1px solid #E1E1E1 !important;
+    padding:6px 4px;
+}
+.ui-jqgrid .ui-jqgrid-ftable {table-layout:fixed; margin-bottom:0;border-left: 1px solid #E1E1E1 !important;}

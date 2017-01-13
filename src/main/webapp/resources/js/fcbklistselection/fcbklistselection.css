@@ -1,0 +1,142 @@
+@charset "utf-8";
+#fcbklist 
+{
+	list-style-type:none;
+	margin:0pt;
+	overflow:auto;
+	padding:0pt;
+	z-index:1;
+	width: 100%;
+}
+#filters {
+	padding:4px 0pt 0pt;
+	zoom:1;
+	display: none;
+}
+#filters .selections {
+	float:left;
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+
+#filters .selections li.view_on {
+	background:#FFFFFF url(images/multi_selector_bg.gif) repeat-x scroll center top;	
+}
+#filters .selections li {
+	float:left;
+	padding:4px 7px;
+	text-align:center;
+	width:100px;
+}
+#filters .selections li a{
+	color:#3B5998;
+	text-decoration:none;
+}
+#fcbklist ul li {
+	background-color:#F7F7F7;
+	border:1px solid #D8DFEA;
+	display:block;
+	float:left;
+	list-style-image:none;
+	list-style-type:none;
+	margin:5px 10px;
+	padding:10px;
+	cursor:pointer;
+	font-size:16px; 
+	line-height:25px;
+	text-align: center;
+	width:50px;
+}
+#fcbklist .fcbklist_item 
+{
+	clear:both;
+	position:relative;
+	/*height:51px;*/
+	width:110px;
+	overflow:hidden;
+}
+#fcbklist .itemover 
+{
+}
+#fcbklist .lihead
+{
+	cursor:default;
+	border-top:none;
+	border-right:none;
+	border-bottom:1px solid #6fb3e0 !important;
+	border-left:none;
+	width:100%; text-align:left; border:none; background:none; height:40px;padding:0px;font-size:14px; font-weight:bold;
+	line-height:50px;
+	margin:0;
+}
+#fcbklist ul
+{
+	cursor:default;
+	border:1px dotted #e2e2e2 !important;
+	height:60px;
+	margin:5px;
+}
+#fcbklist ul .head{
+	font-size:14px; font-weight:bold;text-align: left;
+	border:none;
+	background: none;
+	width:200px;
+}
+#fcbklist .itemhead
+{
+	background:none;
+	width:300px;
+}
+#fcbklist .itemsubhead
+{
+	background:none;
+}
+#fcbklist .liselected 
+{
+	border:1px solid #4ac745 !important;
+	background-color:#e3ffe2 !important;
+	background-image: url(images/checked_green.gif);
+	background-repeat:no-repeat;
+	background-position:right top;
+}
+#fcbklist .itemselected
+{
+	background-color:#e3ffe2 !important;
+	background-image: url(images/checked_green.gif);
+	background-repeat:no-repeat;
+	background-position:right top;	
+}
+#fcbklist .itemchecked 
+{
+	background-color:#eaf7ff !important;
+	background-image: url(images/checked.gif);
+	background-repeat:no-repeat;
+	background-position:right top;	
+}
+#fcbklist .itemdisabled 
+{
+	background-color:#faafaf !important;
+}
+#fcbklist .lichecked{
+	cursor:default;
+	border:1px solid #349cd8 !important;
+}
+#fcbklist .lidisabled 
+{
+	border:1px solid #fe6b6b !important;
+	background-color:#faafaf !important;
+	cursor:default;
+}
+#fcbklist strong {
+	color:#222222;
+	font-size:11px;	
+	margin-top:2px;
+	width:65px;
+}
+.clearer 
+{
+	clear:both;
+	height:1px;
+	font-size:1px;
+}

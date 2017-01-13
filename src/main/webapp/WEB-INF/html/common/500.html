@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>网上书店</title>
+
+    <meta name="description" content="500 Error Page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="${baseUrl}/resources/ace/assets/css/ace.css" />
+</head>
+
+<body class="no-skin">
+<div class="main-container" id="main-container">
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- #section:pages/error -->
+                        <div class="error-container">
+                            <div class="well">
+                                <h1 class="grey lighter smaller">
+											<span class="blue bigger-125">
+												<i class="ace-icon fa fa-random"></i>
+												500
+											</span>
+                                    系统错误
+                                </h1>
+                                <h3 class="lighter smaller">
+			${errorMsg!}
+			</h3>
+                                <hr />
+
+                            </div>
+                        </div>
+
+                        <!-- /section:pages/error -->
+
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<script type="text/javascript" src="${baseUrl}/js/jquery-1.8.2.min.js"></script>
+<script src="${baseUrl}/resources/js/layer/layer.js"></script>
+<script src="${baseUrl}/resources/js/jquery.ext.js"></script>
+<script src="${baseUrl}/resources/js/layer/extend/layer.ext.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        window.parent.alertMsg("${msg.msgText!}","${msg.msgStatus!}");
+        window.parent.query();
+        $.close();
+    });
+</script>
+<div class="main-content">
+</div>
+</div>
+</body>
+</html>

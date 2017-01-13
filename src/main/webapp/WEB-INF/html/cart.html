@@ -1,0 +1,122 @@
+<script type="text/javascript" src="${baseUrl}/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="${baseUrl}/js/cart.js"></script>
+<script src="${baseUrl}/resources/js/jquery.ext.js"></script>
+<script src="${baseUrl}/resources/js/layer/extend/layer.ext.js"></script>
+<script src="${baseUrl}/resources/js/layer/layer.js"></script>
+<link href="${baseUrl}/css/cart.css" rel="stylesheet">
+<script type="text/javascript">
+jQuery(function($){
+	refreshData();
+});
+function submitdForm(){
+	var address = $("input[name='addressli']:checked").val();
+	if(address==null){
+		alert("请选择收获地址");
+		return;
+	}
+	$("#address").val(address);
+	$.ajax({
+        cache: true,
+        type: "POST",
+        url:"${baseUrl}/order/save",
+        data:$('#dForm').serialize(),// 你的formid
+        async: false,
+        error: function(request) {
+            alert("下单失败");
+        },
+        success: function(data) {
+        	window.parent.cartTotalMoneyAndCount();
+        	window.parent.alertMsg(data.msg.msgText,data.msg.msgStatus);
+        	$.close();
+        }
+    });
+}
+function addAddress(){
+	$.dialog("${baseUrl}/address/to_add","新增收货地址","600px","450px");
+}
+function optEdit(id){
+	$.dialog("${baseUrl}/address/to_edit?id="+id,"修改收货地址","600px","450px");
+}
+function alertMsg(msgText,msgStatus){
+		$.alert(msgText,msgStatus);
+	}
+function refreshData(){
+	$("#addresses").empty();
+	$.get("${baseUrl}/address/list",{},function(data){
+		var html="";
+		$.each(data.addresses,function(i,address){
+			if(i==0){
+				html+='<li><input type="radio" name="addressli" value="'+address.id+'" checked="checked"><span>'+address.province+'省&nbsp;'+address.city+'市&nbsp;'+address.area+'区(县)&nbsp;&nbsp;'+address.detail+'&nbsp;&nbsp;('+address.acceptusername+'&nbsp;&nbsp;'+address.tel+')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#none" onclick="optDel(\''+address.id+'\')" style="color: red;">[删除]</a>&nbsp;&nbsp;&nbsp;<a href="#none" onclick="optEdit(\''+address.id+'\')" style="color: red;">[修改]</a></span></li>';
+			}else{
+				html+='<li><input type="radio" name="addressli" value="'+address.id+'"><span>'+address.address+'('+address.acceptusername+'&nbsp;&nbsp;'+address.tel+')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#none" onclick="optDel(\''+address.id+'\')" style="color: red;">[删除]</a>&nbsp;&nbsp;&nbsp;<a href="#none" onclick="optEdit(\''+address.id+'\')" style="color: red;">[修改]</a></span></li>';
+			}
+		});
+		$("#addresses").append(html);
+	});
+}
+function optDel(id){
+	$.confirm("确认删除？", function(){
+		$.post("${baseUrl}/address/remove",{id:id},function(data){
+				alertMsg(data.msg.msgText,data.msg.msgStatus);
+				refreshData();
+		});
+	});
+}
+</script>
+<body>
+<form action="${baseUrl}/order/save" id="dForm" method="post">
+<div>
+<span style="font-weight: bold;padding-left: 3%;">确认收货地址:</span>
+<a href="#none" onclick="addAddress()" style="color: red;">[新增确认收货地址]</a>
+<ul style="padding-left: 3%;" id="addresses">
+</ul>
+</div>
+<input type="hidden" name="total" id="total">
+<input type="hidden" name="address" id="address">
+<div class="catbox" style="padding-top: 0px;">
+  <table id="cartTable">
+    <thead>
+      <tr>
+        <th><label>
+            <input class="check-all check" type="checkbox"/>&nbsp;&nbsp;全选</label></th>
+        <th>商品</th>
+        <th>单价</th>
+        <th>数量</th>
+        <th>小计</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    <#list carts as cart>
+      <tr id="${cart.id!}">
+        <td class="checkbox"><input class="check-one check" type="checkbox"/></td>
+        <td class="goods"><img src="${showImgUrl}${cart.book.image!}" alt=""/><span>${cart.book.bname!}</span></td>
+       	<input type="hidden" name="orderitems[${cart_index}].count" id="count_${cart.id!}" value="${cart.count!}"/>
+       	<input type="hidden" name="orderitems[${cart_index}].subTotal" id="subTotal_${cart.id!}" value="${cart.totalPrice!}">
+       	<input type="hidden" name="orderitems[${cart_index}].bid" value="${cart.book.bid!}">
+        <td class="price">${cart.book.price!}</td>
+        <td class="count"><span class="reduce">-</span>
+        <input class="count-input" type="text" value="${cart.count!}"/>
+          <span class="add">+</span></td>
+        <td class="subtotal">${cart.totalPrice!}</td>
+        <td class="operation"><span class="delete">删除</span></td>
+      </tr>
+    </#list>
+    </tbody>
+  </table>
+  <div class="foot" id="foot">
+    <label class="fl select-all"><input type="checkbox" class="check-all check"/>&nbsp;&nbsp;全选</label>
+    <a class="fl delete" id="deleteAll" href="javascript:;">删除</a>
+    <div class="fr closing" onclick="submitdForm();">下 单</div>
+    <input type="hidden" id="cartTotalPrice" />
+    <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
+    <div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span></div>
+    <div class="selected-view">
+      <div id="selectedViewList" class="clearfix">
+        <div><img src="images/1.jpg"><span>取消选择</span></div>
+      </div>
+      <span class="arrow">◆<span>◆</span></span> </div>
+  </div>
+</div>
+</form>
+</body>

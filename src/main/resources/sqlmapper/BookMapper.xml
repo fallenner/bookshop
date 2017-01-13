@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hnust.dao.BookMapper">
+    <resultMap type="cn.hnust.domain.Book" id="baseResultMap">
+        <id column="bid" property="bid"/>
+        <result column="bname" property="bname"/>
+        <result column="price" property="price"/>
+        <result column="image" property="image"/>
+        <result column="cid" property="cid"/>
+        <result column="cname" property="cname"/> 
+        <result column="sellcount" property="sellcount"/>
+        <result column="blurb" property="blurb"/>
+        <result column="recommend" property="recommend"/>
+    </resultMap>
+    <insert id="insert" parameterType="cn.hnust.domain.Book">
+        INSERT INTO book
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="bid != null and bid !=''" >
+                bid,
+            </if>
+            <if test="bname != null and bname !=''" >
+                bname,
+            </if>
+              <if test="price != null and price !=''" >
+                price,
+            </if>
+              <if test="author != null and author !=''" >
+                author,
+            </if>
+             <if test="image != null and image !=''" >
+                image,
+            </if>
+             <if test="cid != null and cid !=''" >
+                cid,
+            </if>
+             <if test="blurb != null and blurb !=''" >
+                blurb,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+             <if test="bid != null and bid !=''" >
+                #{bid},
+            </if>
+            <if test="bname != null and bname !=''" >
+                #{bname},
+            </if>
+            <if test="price != null and price !=''" >
+                #{price},
+            </if>
+            <if test="author != null and author !=''" >
+                #{author},
+            </if>
+            <if test="image != null and image !=''" >
+                #{image},
+            </if>
+            <if test="cid != null and cid !=''" >
+                #{cid},
+            </if>
+            <if test="blurb != null and blurb !=''" >
+                #{blurb},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="cn.hnust.domain.Book">
+        UPDATE book 
+        <set>
+            <if test="bname !=null and bname !=''">
+                bname=#{bname},
+            </if>
+            <if test="price !=null and price !=''">
+                price=#{price},
+            </if>
+            <if test="author !=null and author !=''">
+                author=#{author},
+            </if>
+             <if test="image !=null and image !=''">
+                image=#{image},
+            </if>
+             <if test="cid !=null and cid !=''">
+                cid=#{cid},
+            </if>
+            <if test="blurb != null and blurb !=''" >
+                blurb=#{blurb},
+            </if>
+        </set>
+        WHERE bid=#{bid}
+    </update>
+    <sql id="queryCondition">
+        <if test="dto != null">
+        <if test="dto.bid != null and dto.bid !=''">
+            AND b.bid=#{dto.bid}
+        </if>
+          <if test="dto.bname != null and dto.bname !=''">
+            AND b.bname like #{dto.bname}
+        </if>
+          <if test="dto.cid != null and dto.cid !=''">
+            AND b.cid=#{dto.cid}
+        </if>
+         <if test="dto.recommend != null and dto.recommend !=''">
+            AND b.recommend=#{dto.recommend}
+        </if>
+        </if>
+    </sql>
+    <select id="query" parameterType="map" resultMap="baseResultMap">
+        SELECT * FROM book b WHERE 1=1 
+        <include refid="queryCondition"></include>
+        <if test="orderBy != null and orderBy != ''">
+             ORDER BY ${orderBy}
+        </if>
+    </select>
+    <select id="queryCount" parameterType="map" resultType="int">
+        SELECT COUNT(*) FROM book b WHERE 1=1
+        <include refid="queryCondition"></include>
+    </select>
+    <select id="findById" parameterType="java.lang.String" resultType="cn.hnust.domain.Book">
+        SELECT c.cname,b.* FROM category c,book b WHERE b.bid=#{id} AND c.cid=b.cid
+    </select>
+    <delete id="deleteById" parameterType="java.lang.String">
+        DELETE FROM book WHERE bid=#{bid}
+    </delete>
+</mapper>
