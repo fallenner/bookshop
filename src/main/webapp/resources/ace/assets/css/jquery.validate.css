@@ -1,5 +1,0 @@
-label.error {color: red;font-style: italic;font-size:12px;line-height:15px;margin-bottom:0px;}
-div.error { display: none; }
-input.checkbox { border: none }
-input:focus { border: 1px dotted black; }
-input.error { border: 1px dotted red; }

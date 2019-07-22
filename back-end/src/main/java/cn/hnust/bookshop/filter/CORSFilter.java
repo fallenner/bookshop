@@ -1,8 +1,8 @@
-package com.jsdai.jsdaimanage.filter;
+package cn.hnust.bookshop.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jsdai.jsdaimanage.bean.ResponseResult;
-import com.jsdai.jsdaimanage.util.JwtTokenHelper;
+import cn.hnust.bookshop.bean.ResponseResult;
+import cn.hnust.bookshop.util.JwtTokenHelper;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -27,7 +27,6 @@ public class CORSFilter extends OncePerRequestFilter {
     private AntPathMatcher matcher = new AntPathMatcher();
     private static final String pattern = "/admin/**";
     private static final List<String> excludeList = new ArrayList<String>(Arrays.asList("/admin/login","/admin/verify"));
-    ;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

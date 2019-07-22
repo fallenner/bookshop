@@ -10,10 +10,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/jsdai?useSSL=false
+    url: jdbc:mysql://localhost:3306/bookstore?useSSL=false
     username: root
-    #password: dzq@1234
-    password: Jsdai!@#321
+    password: dzq@1234
     driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
@@ -23,24 +22,8 @@ spring:
       idle-timeout: 30000
       max-lifetime: 1800000
       connection-timeout: 30000
-#    type: com.alibaba.druid.pool.DruidDataSource
-#    maxActive: 20
-#    initialSize: 1
 
-mybatis:
-  mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: com.jsdai.jsdaimanage.bean
-
-#pagehelper分页插件
-pagehelper:
-  helperDialect: mysql
-  reasonable: true
-  supportMethodsArguments: true
-  params: count=countSql
-#logging:
-#  level:
-#    com.jsdai.jsdaimanage.dao: info
-
-jpush:
-  appKey: ac03060d4343cfdc3e3a0d3d
-  masterSecret: b8addc34cc18cfa42e2fa06d
+# Logger Config
+logging:
+  level:
+    com.baomidou.mybatisplus.samples.quickstart: debug

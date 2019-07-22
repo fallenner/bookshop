@@ -1,8 +1,8 @@
-package com.jsdai.jsdaimanage.util;
+package cn.hnust.bookshop.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jsdai.jsdaimanage.bean.ResponseResult;
+import cn.hnust.bookshop.bean.ResponseResult;
 import io.jsonwebtoken.*;
 
 import javax.crypto.spec.SecretKeySpec;
@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class JwtTokenHelper {
 
-    private static final String salt = "jsdai";
+    private static final String salt = "bookshop";
     //最大过期时间
     private static final long maxExpiredMillis = 24 * 60 * 60 * 1000;
     //人为控制过期时间，在此间隔时间内如果没有访问接口,自动过期。使得每次访问接口自动延长过期时间

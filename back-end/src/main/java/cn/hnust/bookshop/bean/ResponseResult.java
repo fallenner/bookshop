@@ -1,4 +1,4 @@
-package com.jsdai.jsdaimanage.bean;
+package cn.hnust.bookshop.bean;
 
 public class ResponseResult<T> {
     private Integer code;
