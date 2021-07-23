@@ -15,13 +15,13 @@ import cn.hnust.service.CategoryService;
 
 @Controller
 @RequestMapping("/category")
-public class CategoryController extends BaseController{
-	@Autowired
-	private CategoryService categoryService;
-	
-	@RequestMapping("/list")
-	@ResponseBody
-	public List<Category> list(Category category,HttpServletRequest request,ModelMap m){
-		return categoryService.query(category);
-	}
+public class CategoryController extends BaseController {
+    @Autowired
+    private CategoryService categoryService;
+
+    @RequestMapping("/list")
+    @ResponseBody
+    public List<Category> list(Category category, HttpServletRequest request, ModelMap m) {
+        return categoryService.query(category);
+    }
 }

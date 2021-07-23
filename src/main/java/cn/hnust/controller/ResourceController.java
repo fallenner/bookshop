@@ -10,10 +10,10 @@ import cn.hnust.util.VFSUtil;
 
 @Controller
 @RequestMapping("/resource")
-public class ResourceController extends BaseController{
-	@RequestMapping("/showImg")
-	public void showImg(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		String path=get(request, "path");
-		VFSUtil.showVFSImage(request, response, path);
-	}
+public class ResourceController extends BaseController {
+    @RequestMapping("/showImg")
+    public void showImg(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String path = get(request, "path");
+        VFSUtil.showVFSImage(request, response, path);
+    }
 }

@@ -8,15 +8,15 @@ import org.apache.ibatis.session.RowBounds;
 import cn.hnust.domain.Order;
 
 public interface OrderMapper {
-	void insert(Order order);
+    void insert(Order order);
 
-	List<Order> query(Map<String, Object> params, RowBounds rowBounds);
+    List<Order> query(Map<String, Object> params, RowBounds rowBounds);
 
-	Integer queryCount(Map<String, Object> params);
+    Integer queryCount(Map<String, Object> params);
 
-	Order findById(String oid);
+    Order findById(String oid);
 
-	void update(Order order);
+    void update(Order order);
 
-	void remove(String oid);
+    void remove(String oid);
 }

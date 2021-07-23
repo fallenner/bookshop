@@ -9,14 +9,14 @@ import cn.hnust.domain.User;
 
 public interface UserMapper {
 
-	User findByUserName(String username);
+    User findByUserName(String username);
 
-	List<User> query(Map<String, Object> params, RowBounds rowBounds);
+    List<User> query(Map<String, Object> params, RowBounds rowBounds);
 
-	Integer queryCount(Map<String, Object> params);
+    Integer queryCount(Map<String, Object> params);
 
-	void insert(User user);
+    void insert(User user);
 
-	void update(User user);
-	
+    void update(User user);
+
 }

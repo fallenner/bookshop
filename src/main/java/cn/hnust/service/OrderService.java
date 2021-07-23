@@ -5,14 +5,14 @@ import cn.hnust.util.Pager;
 
 public interface OrderService {
 
-	void save(Order order);
+    void save(Order order);
 
-	Pager query(Order order, String orderBy,String entitySQL, int pageNum, int pageSize);
+    Pager query(Order order, String orderBy, String entitySQL, int pageNum, int pageSize);
 
-	Order get(String id);
+    Order get(String id);
 
-	void edit(Order order);
+    void edit(Order order);
 
-	void remove(String oid);
+    void remove(String oid);
 
 }

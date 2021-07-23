@@ -7,8 +7,8 @@ import cn.hnust.domain.Category;
 
 public interface CategoryMapper {
 
-	List<Category> query(Map<String, Object> params);
+    List<Category> query(Map<String, Object> params);
 
-	Category findById(String cid);
+    Category findById(String cid);
 
 }

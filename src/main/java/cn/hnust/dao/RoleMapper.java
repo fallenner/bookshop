@@ -6,11 +6,11 @@ import java.util.Map;
 import cn.hnust.domain.Role;
 
 public interface RoleMapper {
-	List<Role> findByusername(String username);
+    List<Role> findByusername(String username);
 
-	Role findByRoleName(String rolename);
+    Role findByRoleName(String rolename);
 
-	void addUser(Map<String,Object> params);
+    void addUser(Map<String, Object> params);
 
-	void removeUserFromAdmin(String uid);
+    void removeUserFromAdmin(String uid);
 }

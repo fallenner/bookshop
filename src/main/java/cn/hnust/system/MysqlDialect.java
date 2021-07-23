@@ -1,12 +1,12 @@
 package cn.hnust.system;
 
 /**
- * Created by liwj on 2016-2-15.
+ * Created by dzq on 2016-2-15.
  */
 public class MysqlDialect extends Dialect {
     @Override
     public String getLimitString(String sql, int offset, int limit) {
-        if(0 == offset && Integer.MAX_VALUE == limit){
+        if (0 == offset && Integer.MAX_VALUE == limit) {
             return sql;
         }
         sql = sql.trim();

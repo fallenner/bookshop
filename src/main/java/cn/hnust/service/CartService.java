@@ -5,16 +5,16 @@ import java.util.Map;
 
 import cn.hnust.domain.Cart;
 
-public interface CartService{
+public interface CartService {
 
-	Map<String, Object> statistics(String userId);
+    Map<String, Object> statistics(String userId);
 
-	void save(Cart cart);
+    void save(Cart cart);
 
-	List<Cart> query(Cart cart, String entitySQL, String order);
+    List<Cart> query(Cart cart, String entitySQL, String order);
 
-	void remove(String id);
+    void remove(String id);
 
-	void removeByUId(String uid);
+    void removeByUId(String uid);
 
 }

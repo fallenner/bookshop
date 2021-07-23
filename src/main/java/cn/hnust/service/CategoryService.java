@@ -6,8 +6,8 @@ import cn.hnust.domain.Category;
 
 public interface CategoryService {
 
-	List<Category> query(Category category);
+    List<Category> query(Category category);
 
-	Category findById(String cid);
-	
+    Category findById(String cid);
+
 }

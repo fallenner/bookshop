@@ -7,14 +7,14 @@ import cn.hnust.util.Pager;
 
 public interface BookService {
 
-	Pager query(Book book,int pageNum,int pageSize,String orderBy);
+    Pager query(Book book, int pageNum, int pageSize, String orderBy);
 
-	Book findById(String id);
+    Book findById(String id);
 
-	Pager queryhotBooks();
+    Pager queryhotBooks();
 
-	void save(Book book, MultipartFile multipartFile);
+    void save(Book book, MultipartFile multipartFile);
 
-	void remove(String bid);
+    void remove(String bid);
 
 }

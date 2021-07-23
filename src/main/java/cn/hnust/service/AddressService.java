@@ -6,12 +6,12 @@ import cn.hnust.domain.Address;
 
 public interface AddressService {
 
-	void save(Address address);
+    void save(Address address);
 
-	List<Address> queryByCurrentUser();
+    List<Address> queryByCurrentUser();
 
-	void remove(String id);
+    void remove(String id);
 
-	Address findById(String id);
+    Address findById(String id);
 
 }

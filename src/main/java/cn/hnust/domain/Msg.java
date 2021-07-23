@@ -22,12 +22,12 @@ public class Msg {
         this.msgText = msgText;
     }
 
-    public void setSuccessMsg(String text){
+    public void setSuccessMsg(String text) {
         this.msgStatus = "true";
         this.msgText = text;
     }
 
-    public void setErrorMsg(String text){
+    public void setErrorMsg(String text) {
         this.msgStatus = "false";
         this.msgText = text;
     }
