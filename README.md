@@ -15,7 +15,7 @@ maven + springmvc + shiro + spring + mybatis + mysql + freemarker
 1. 普通用户  
  用户名: dzq  密 码: 12345678
 2. 管理员用户  
- 用户名: dzq  密 码: 12345678
+ 用户名: admin  密 码: 12345678
  
 #### Plan
     这个项目作为本人16年毕业设计，用的是当时比较流行的技术栈。  
