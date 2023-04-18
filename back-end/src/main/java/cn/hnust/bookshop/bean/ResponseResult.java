@@ -4,7 +4,6 @@ public class ResponseResult<T> {
     private Integer code;
     private String msg;
     private T result;
-
     public String getMsg() {
         return msg;
     }
